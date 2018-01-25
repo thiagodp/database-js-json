@@ -1,0 +1,15 @@
+{
+    "name": "database-js-json",
+    "version": "0.1.0",
+    "description": "Database-js driver for JSON files",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": ["database-js","json"],
+    "author": "Thiago Delgado Pinto",
+    "license": "MIT",
+    "dependencies": {
+      "jl-sql-api": "^2.8.1"
+    }
+  }
