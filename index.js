@@ -58,12 +58,17 @@ class JsonDriver {
     _saveFile() {
         var _this = this;
         return new Promise( function ( resolve, reject ) {
-            fs.writeFile( _this._filename, _this._data || [], _this._options.charset, function ( err ) {
-                if ( err ) {
-                    return reject( err );
+            fs.writeFile(
+                _this._filename,
+                JSON.stringify( _this._data || [] ),
+                _this._options.charset,
+                function ( err ) {
+                    if ( err ) {
+                        return reject( err );
+                    }
+                    return resolve();
                 }
-                return resolve();
-            } );
+            );
         } );        
     }
 
@@ -136,6 +141,7 @@ class JsonDriver {
 }
 
 module.exports = {
+    
     open: function( connection ) {
 
         var options = {};
