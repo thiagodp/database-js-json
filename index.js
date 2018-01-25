@@ -35,8 +35,9 @@ class JsonDriver {
      * @returns {Promise}
      */
     _loadFile() {
+        var _this = this;
         return new Promise( function ( resolve, reject ) {
-            fs.readFile( this._filename, this._options.charset, function ( err, data ) {
+            fs.readFile( _this._filename, _this._options.charset, function ( err, data ) {
                 if ( err ) {
                     return reject( err );
                 }
@@ -55,8 +56,9 @@ class JsonDriver {
      * @returns {Promise}
      */    
     _saveFile() {
+        var _this = this;
         return new Promise( function ( resolve, reject ) {
-            fs.writeFile( this._filename, this._data || [], this._options.charset, function ( err ) {
+            fs.writeFile( _this._filename, _this._data || [], _this._options.charset, function ( err ) {
                 if ( err ) {
                     return reject( err );
                 }
@@ -75,8 +77,9 @@ class JsonDriver {
         if ( this._data && ! reloadFile ) {
             return Promise.resolve( this._data );
         }
+        var _this = this;
         return this._loadFile().then( function ( data ) {
-            this._data = data;
+            _this._data = data;
             return data;
         } );
     }
@@ -88,6 +91,7 @@ class JsonDriver {
      * @returns {Promise}
      */
     query( sql ) {
+        var _this = this;
         return new Promise( function( resolve, reject ) {
 
             var queryData = function( data ) {
@@ -98,7 +102,7 @@ class JsonDriver {
                     } );
             };
 
-            this.data()
+            _this.data()
                 .then( queryData )
                 .catch( function ( err ) { reject( err ); } );
         } );
@@ -112,16 +116,16 @@ class JsonDriver {
      * @returns {Promise}
      */    
     execute( sql ) {
-
+        var _this = this;
         return new Promise( function( resolve, reject ) {
 
-            this.query( sql )
+            _this.query( sql )
                 .then( function keepResults( rows ) {
-                    this._data = rows; // Keep the last content
+                    _this._data = rows; // Keep the last content
                     return rows;
                 } )
                 .then( function saveToFile( rows ) {
-                    return this._saveFile()
+                    return _this._saveFile()
                         .then( function ( data ) { resolve( data ); } )
                         .catch( function ( err ) { reject( err ); } );
                 } )
@@ -137,7 +141,7 @@ module.exports = {
         var options = {};
         if ( connection.Parameters ) {
             connection.Parameters.split( '&' ).map( function ( s ) {
-                
+
                 var separated = s.split( '=' );
                 var key = separated[ 0 ];
                 var val = separated[ 1 ];
