@@ -95,7 +95,7 @@ class JsonDriver {
         return new Promise( function( resolve, reject ) {
 
             var queryData = function( data ) {
-                api.query( sql )
+                _this.api.query( sql )
                     .fromArrayOfObjects( Array.isArray( data ) ? data : [ data ] )
                     .toArrayOfObjects( function( rows ) {
                         resolve( rows );
