@@ -24,7 +24,7 @@ class JsonDriver {
 
         this._options = Object.assign( {
             charset: 'utf-8'
-        }, options );
+        }, options || {} );
 
         this._data = null;
     }
@@ -173,4 +173,5 @@ module.exports = {
 
         return new JsonDriver( connection.Database, options );
     }
+
 };
