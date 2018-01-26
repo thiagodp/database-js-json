@@ -12,7 +12,7 @@ class JsonDriver {
      * Constructor
      * 
      * @param {string} filename File name
-     * @param {object} options Options. Defaults to { charset: 'utf-8' }.
+     * @param {object} options Options. Defaults to { charset: 'utf-8', checkOnConnect: true }.
      * 
      * @see https://github.com/avz/node-jl-sql-api#options-object for more options.
      */
@@ -23,10 +23,15 @@ class JsonDriver {
         this._filename = filename;
 
         this._options = Object.assign( {
-            charset: 'utf-8'
+            charset: 'utf-8',
+            checkOnConnect: true
         }, options || {} );
 
         this._data = null;
+
+        if ( this._options.checkOnConnect && ! fs.existsSync( this._filename ) ) {
+            throw new Error( 'File "' + this._filename + '" does not exist.' );
+        }
     }
 
     /**

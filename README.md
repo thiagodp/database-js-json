@@ -6,6 +6,8 @@ A [database-js](https://github.com/mlaanderson/database-js) driver for JSON file
 
 This is a wrapper around the [jl-sql-api](https://github.com/avz/node-jl-sql-api), intended to be used with [database-js](https://github.com/mlaanderson/database-js) for handling JSON files.
 
+Our [releases](https://github.com/thiagodp/database-js-json/releases) adopt [Semantic Versioning](https://semver.org/).
+
 ## Install
 
 ```shell
@@ -32,9 +34,24 @@ var Connection = require( 'database-js2' ).Connection;
 } )();
 ```
 
-### Options
+## Basic Options
 
-Options from [jl-sql-api](https://github.com/avz/node-jl-sql-api) can be passed as arguments to the database connection, in the format of a URL.
+Options can be passed as arguments to the database connection string, in URL-format.
+
+- `charset`: defines the charset (encoding) used to handle the JSON file
+  - Defaults to `utf-8`
+  - Example: `const connection = new Database( 'json:///test.json?charset=utf-16' );`
+  - Available in database-json-json version `1.0.0` or later
+
+- `checkOnConnect`: whether it should check if the file exists when connecting to it
+  - Defaults to `true`
+  - Example: `const connection = new Database( 'json:///test.json?checkOnConnect=0' );`
+  - Available in database-json-json version `1.1.0` or later  
+
+
+## Additional Options
+
+Options from [jl-sql-api](https://github.com/avz/node-jl-sql-api) can also be passed as arguments to the database connection.
 
 Example: `{ tmpDir: "/path/to/dir" }`
 ```javascript
