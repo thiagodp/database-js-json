@@ -173,6 +173,12 @@ module.exports = {
                     }
                     options[ key ][ subKey ] = val;
                 }
+
+                // Adjust 'checkOnConnect'
+                if ( options[ 'checkOnConnect' ] ) {
+                    var isFalse = function ( v ) { return 'false' === v || 'no' === v || '0' == v; };
+                    options[ 'checkOnConnect' ] = ! isFalse( val );
+                }
             });
         }
 

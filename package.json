@@ -4,7 +4,7 @@
   "description": "Database-js driver for JSON files",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "keywords": [
     "database-js",
@@ -14,5 +14,10 @@
   "license": "MIT",
   "dependencies": {
     "jl-sql-api": "^2.8.1"
+  },
+  "devDependencies": {
+    "jl-sql-api": "^2.8.1",
+    "database-js": "^3.0.1",
+    "mocha": "^5.0.0"
   }
 }

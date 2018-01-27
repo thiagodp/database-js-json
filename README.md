@@ -41,12 +41,12 @@ Options can be passed as arguments to the database connection string, in URL-for
 - `charset`: defines the charset (encoding) used to handle the JSON file
   - Defaults to `utf-8`
   - Example: `const connection = new Database( 'json:///test.json?charset=utf-16' );`
-  - Available in database-json-json version `1.0.0` or later
+  - Available in database-js-json version `1.0.0` or later
 
 - `checkOnConnect`: whether it should check if the file exists when connecting to it
   - Defaults to `true`
   - Example: `const connection = new Database( 'json:///test.json?checkOnConnect=0' );`
-  - Available in database-json-json version `1.1.0` or later  
+  - Available in database-js-json version `1.1.0` or later  
 
 
 ## Additional Options
