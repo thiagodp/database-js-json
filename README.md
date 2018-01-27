@@ -45,7 +45,8 @@ Options can be passed as arguments to the database connection string, in URL-for
 
 - `checkOnConnect`: whether it should check if the file exists when connecting to it
   - Defaults to `true`
-  - Example: `const connection = new Database( 'json:///test.json?checkOnConnect=0' );`
+  - Example: `const connection = new Database( 'json:///test.json?checkOnConnect=false' );`
+  - Accepts `false`, `no` or `0` as false
   - Available in database-js-json version `1.1.0` or later  
 
 
