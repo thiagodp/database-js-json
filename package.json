@@ -1,6 +1,6 @@
 {
   "name": "database-js-json",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Database-js driver for JSON files",
   "main": "index.js",
   "scripts": {
