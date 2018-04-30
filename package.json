@@ -7,8 +7,14 @@
     "test": "mocha"
   },
   "keywords": [
+    "database-js-json",
     "database-js",
-    "json"
+    "javascript",
+    "json",
+    "database",
+    "sql",
+    "query",
+    "driver"
   ],
   "author": "Thiago Delgado Pinto",
   "license": "MIT",
