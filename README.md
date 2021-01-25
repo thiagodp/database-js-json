@@ -65,7 +65,22 @@ const dbjs = require( 'database-js' );
         const st3 = conn.prepareStatement( 'SELECT MAX(age) AS older' );
         const r3 = await st3.query();
         console.log( r3 ); // [ { older: 53 } ]
-        
+
+		// Inserting a row
+		const st4 = conn.prepareStatement( 'INSERT VALUES { "name": "Mary", "age": 18 }' );
+        await st4.execute();
+
+		// Updating a row
+		const st5 = conn.prepareStatement( 'UPDATE SET name = "Robert" WHERE name = "Bob"' );
+        await st5.execute();
+
+		// Deleting a row
+		const st6 = conn.prepareStatement( 'DELETE WHERE name = "Alice"' );
+        await st6.execute();
+
+		// Now people.json is
+		// [{"name":"Robert","age":53},{"name":"Jack","age":16},{"name":"Mary","age":18}]
+
     } catch ( err ) {
         console.error( err );
     } finally {
@@ -89,7 +104,7 @@ Options can be passed as arguments to the database connection string, in URL-for
   - Defaults to `true`
   - Example: `const connection = new Connection( 'json:///test.json?checkOnConnect=false' );`
   - Accepts `false`, `no` or `0` as false
-  - Available in database-js-json version `1.1.0` or later  
+  - Available in database-js-json version `1.1.0` or later
 
 
 ## Additional Options
